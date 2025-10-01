@@ -537,7 +537,7 @@ const jo = {};
                 dataLayer[aq](arguments)
             }
             i("js", new Date), i(O, v)
-        }), bd && bd()), r && Defer.css(ce + Z + "dyn-css/authorization.css?targetBlogID=" + r)
+        }), bd && bd())
     }
     ae && (aQ[aT] = aQ[aT][D](br, br + b6 + " " + ae + br)), Defer.dom(".lazyload", 1, "loaded", E), Defer.dom("#post-pager", 1, null, y, null, {
         rootMargin: "200%"
