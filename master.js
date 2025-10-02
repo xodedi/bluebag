@@ -425,7 +425,7 @@ const jo = {};
 			} else {
 			    // Jika hanya 1 label bukan "blog" atau tidak ada label valid
 			    cL = cN && cN != x ? "-/" + bP(cN) + "/?" : "?";
-			}
+			};
         Defer.js(aG + "/feeds/posts/summary/" + cL + "alt=json&callback=jo." + k + "_" + bs + "_" + cH + "&max-results=" + cR), jo[k + "_" + bs + "_" + cH] = function(cX) {
             var c1 = q(cX.feed.openSearch$totalResults.$t),
                 cZ = cX.feed.category;
