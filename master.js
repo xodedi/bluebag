@@ -406,25 +406,21 @@ const jo = {};
             cR = cI ? q(cQ) + 1 : cQ,
             cN = cL || cM[be],
             cO = cN[bb](","),
-			cL = "",
-			cN = cN[a8](), // Membersihkan spasi/baris baru dari cN
-			cO = cN[bb](",").filter(function(item) { return item[a8](); }).map(function(item) { return item[a8](); }), // Membersihkan dan memfilter label
-			var cP = []; // Array sementara untuk label yang difilter
-			if (cO[cx] > 1) {
-			    // Jika lebih dari 1 label, filter label selain "blog"
-			    for (var cR = 0; cR < cO[cx]; cR++) {
-			        if (cO[cR] != "blog") {
-			            cP[aq](cO[cR]);
-			        }
+			cL = "", cN = cN[a8](), cO = cN[bb](","), cTemp = []; // Sementara untuk filter/map manual
+			for (var i = 0; i < cO[cx]; i++) { var item = cO[i][a8](); if (item) cTemp[aq](item); } // Manual filter & map trim (non-empty)
+			cO = cTemp, cP = []; // Reset cO, inisialisasi cP
+			if (cO[cx] > 1) { // Jika lebih dari 1 label, filter label selain "blog"
+			    for (var cR = 0; cR < cO[cx]; cR++) { 
+			        if (cO[cR] != "blog") { cP[aq](cO[cR]); } 
 			    }
 			    // Jika setelah filter masih ada label, pilih acak dari yang tersisa
-			    cL = cP[cx] > 0 ? "-/" + bP(cP[b0[aj](b0[bl]() * cP[cx])]) + "/?" : "?";
+			    cL = cP[cx] > 0 ? "-/" + bP(cP[b0[aj](b0[bl]() * cP[cx])]) + "/?" : "?"; 
 			} else if (cO[cx] == 1 && cO[0] == "blog") {
 			    // Jika hanya 1 label dan itu "blog", ambil "blog"
-			    cL = "-/" + bP(cO[0]) + "/?";
-			} else {
+			    cL = "-/" + bP(cO[0]) + "/?"; 
+			} else { 
 			    // Jika hanya 1 label bukan "blog" atau tidak ada label valid
-			    cL = cN && cN != x ? "-/" + bP(cN) + "/?" : "?";
+			    cL = cN && cN != x ? "-/" + bP(cN) + "/?" : "?"; 
 			};
         Defer.js(aG + "/feeds/posts/summary/" + cL + "alt=json&callback=jo." + k + "_" + bs + "_" + cH + "&max-results=" + cR), jo[k + "_" + bs + "_" + cH] = function(cX) {
             var c1 = q(cX.feed.openSearch$totalResults.$t),
