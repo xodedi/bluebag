@@ -391,13 +391,33 @@ const jo = {};
             }) : bz(cK, "visually-hidden")
         };
 
-    function b3(cI, cH) {
-        var i = new bX;
-        i[bY](bB, cI), i[cr](bx, P), i[bh](null), i[cc + a4](cD, function() {
-            var cJ = i[aD][aI](/<title>(.*?)<\/title>/);
-            cH[be] = cJ[1][D](br + cn, "")
-        })
-    }
+	    async function b3(cI, cH) {
+	    try {
+	        console.log('Fetching URL:', cI);
+	        const response = await fetch(cI);
+	        if (!response.ok) throw new Error('Status: ' + response.status);
+	        const html = await response.text();
+	        console.log('Response length:', html.length);
+	        const regex = /<title>\s*(.*?)\s*<\/title>/i;
+	        const cJ = html.match(regex);
+	        if (cJ && cJ[1]) {
+	            var rawTitle = cJ[1].trim();
+	            var separator = br + cn;
+	            if (rawTitle.indexOf(separator) !== -1) {
+	                cH[be] = rawTitle.replace(separator, "");
+	            } else {
+	                cH[be] = rawTitle;
+	            }
+	            console.log('Title set:', cH[be]);
+	        } else {
+	            console.warn('No title match:', html.substr(0, 200));
+	            cH[be] = 'Judul Default';
+	        }
+	    } catch (err) {
+	        console.error('Fetch error:', err);
+	        cH[be] = 'Error Fetch';
+	    }
+	}
     jo[ct] = function(cM) {
         var cH = aH(),
             cL = cM[bB + a2]("data-label"),
