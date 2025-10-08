@@ -363,9 +363,13 @@ const jo = {};
                 var cR = aQ[bJ]("li"),
                     cT = aQ[bJ]("span");
                 return I(cT, "btn btn-sm rounded-pill icon-center"), cT[be] = i || cU, cT[bk + a2]("data-page", cU), cU == cS ? I(cT, "btn-primary") : (I(cT, "btn-light hover-btn-primary"), cT[cc + a4](G, function(cW) {
-                    var cV;
-                    cW[ca](), 1 == (cO = cT[bB + a2]("data-page")) ? (cV = cI ? aG + "/blog" + cN + "?max-results=" + cH + "&page=" + cO : aG, M[bf][X] = cV) : (cV = (cO - 1) * cH, Defer.js(aG + "/feeds/posts/summary/" + cQ + "?start-index=" + cV + "&alt=json&callback=jo." + e + "_date&max-results=1"))
-                })), cR[cy](cT), cR
+    var cV;
+    cW[ca](), 
+    cO = cT[bB + a2]("data-page"),
+    1 == cO && aO[bW]("/blog?updated-max=") > -1 ?  // <-- Kondisi baru: Hanya jika page=1 DAN URL punya /blog?updated-max=
+        (M[bf][X] = aG + "/blog/") :  // Redirect ke /blog/
+        (1 == cO ? (cV = cI ? aG + "/search" + cN + "?max-results=" + cH + "&page=" + cO : aG, M[bf][X] = cV) : (cV = (cO - 1) * cH, Defer.js(aG + "/feeds/posts/summary/" + cQ + "?start-index=" + cV + "&alt=json&callback=jo." + e + "_date&max-results=1")))
+})), cR[cy](cT), cR
             }
             cK[bB + a2]("data-pagination") != x ? (cH = cK[bB + a2]("data-posts"), cI = cK[bB + a2]("data-label"), cQ = (cI = bP(cI)) ? "-/" + cI + "/" : "", cN = cI ? "/label/" + cI : "", Defer.js(aG + "/feeds/posts/summary/" + cQ + "?alt=json&callback=jo." + e + "_" + bs + "&max-results=1"), cM = co("max-results", aO), cP = co("page", aO), cL = cM || cH, cO = cP || 1, jo[e + "_" + bs] = function(cU) {
                 var cS = cU.feed,
