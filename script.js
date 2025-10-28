@@ -268,13 +268,13 @@ const jo = {};
                 (we(e, t) ? xe : ke)(e, t)
             }(ze, "dark-mode"), null !== d && d[$ + Y]("theme", we(ze, "dark-mode") ? "dark" : "light")
     })), t[w + v](W, (function() {
-    const backToTop = document.getElementById('back-to-top');
-    if (this.pageYOffset > 630) {
-        backToTop.classList.add('show');
+    const backToTop = a[p]('back-to-top');
+    if (this.pageYOffset > 650) {
+        backToTop.classList[w]('show');
     } else {
-        backToTop.classList.remove('show');
+        backToTop.classList[k]('show');
     }
-  	}),!1), Le && Le[w + v]("load", (function(e) {
+    }), !1), Le && Le[w + v]("load", (function(e) {
         xe(Te, "loader")
     })), Be && Be[w + v](Q, (function(e) {
         e[q](), et(this[R]), "add-comment" != Te[O].id && a[p]("add-comment")[C](Te)
